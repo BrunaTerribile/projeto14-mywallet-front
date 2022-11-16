@@ -1,12 +1,6 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
-	* {
-		font-family: 'Raleway', sans-serif;
-		box-sizing: border-box;
-		background-color: #8C11BE;
-	}
-
     html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -34,6 +28,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #8C11BE;
+	font-family: 'Raleway', sans-serif;
+	box-sizing: border-box;
 }
 ol, ul {
 	list-style: none;

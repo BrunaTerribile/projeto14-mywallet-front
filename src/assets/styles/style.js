@@ -18,14 +18,14 @@ export const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 25px;
+    margin: 10px 25px;
 `
 
 export const Header = styled.div`
     height: 75px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 0 30px;
 
     h1 {
