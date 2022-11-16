@@ -1,22 +1,34 @@
 import styled from "styled-components"
 import exit from "../assets/exit.svg"
 import { PageContainer, Header } from "../assets/styles/style"
+import { useNavigate } from "react-router-dom"
+import ExtractItem from "../components/ExtractItem"
 
 export default function Extract() {
+    const navigate = useNavigate()
+
     return (
         <>
             <Header>
                 <h1>Olá, Fulano</h1>
-                <img src={exit}/>
+                <img src={exit} alt='icone-saída' onClick={() => navigate('/')}/>
             </Header>
             <PageContainer>
-                <ExtractBox> <h2>Não há registros de entrada ou saída</h2> </ExtractBox>
+                <ExtractBox> 
+                    <List>
+                        <ExtractItem />
+                    </List>
+                    <Total>
+                        <p> SALDO </p>
+                        <span> 800,00 </span>
+                    </Total>
+                </ExtractBox>
                 <ButtonBox>
-                    <Btn>
+                    <Btn onClick={() => navigate('/novaentrada')}>
                         <ion-icon name="add-circle-outline"></ion-icon>
                         <p>Nova entrada</p>
                     </Btn>
-                    <Btn>
+                    <Btn onClick={() => navigate('/novasaida')}>
                         <ion-icon name="remove-circle-outline"></ion-icon>
                         <p>Nova saída</p>
                     </Btn>
@@ -33,6 +45,11 @@ const ExtractBox = styled.div`
     border-radius: 5px;
     margin: auto;
     position: relative;
+    box-sizing: border-box;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     
     h2 {
         color: #868686;
@@ -43,6 +60,17 @@ const ExtractBox = styled.div`
         text-align: center;
     }
 `
+
+const Total = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        color: #000000;
+        font-weight: 700;
+    }
+`
+
 const ButtonBox = styled.div`
     width: 326px;
     display: flex;
@@ -70,3 +98,8 @@ const Btn = styled.button`
         height: 25px;
     }
 `
+const List = styled.ul`
+    display: flex;
+`
+
+/* <h2>Não há registros de entrada ou saída</h2> */
