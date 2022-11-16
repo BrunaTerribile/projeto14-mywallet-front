@@ -62,6 +62,7 @@ button {
 	padding: 0 20px;
 	height: 46px;
 	width: 326px;
+	box-sizing: border-box;
 }
 
 input {
@@ -76,6 +77,7 @@ input {
 	font-size: 20px;
 	display: flex;
 	align-items: center;
+	box-sizing: border-box;
 }
 `
 

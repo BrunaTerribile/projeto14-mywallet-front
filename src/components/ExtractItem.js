@@ -8,11 +8,15 @@ export default function ExtractItem() {
                 <Description> Almoço mãe </Description>
                 <Value> 39.90 </Value>
             </li>
-
             <li>
                 <Date> 27/11 </Date>
                 <Description> Mercado </Description>
                 <Value> 542,54 </Value>
+            </li>
+            <li>
+                <Date> 26/11 </Date>
+                <Description> Compras Churrasco </Description>
+                <Value> 67,60 </Value>
             </li>
         </List>
     )
@@ -24,7 +28,7 @@ const List =  styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 40px;
+        height: 35px;
     }
 `
 
