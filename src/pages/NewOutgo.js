@@ -1,9 +1,9 @@
-import { PageContainer, Header, Form } from "../assets/styles/style"
+import { PageContainer, Header, Form} from "../assets/styles/style"
 
-export default function NewEntry() {
+export default function NewOutgo() {
     return (
         <PageContainer>
-            <Header><h1>Nova entrada</h1></Header>
+            <Header><h1>Nova saída</h1></Header>
             <Form>
                 <input 
                     name="value"
@@ -17,7 +17,7 @@ export default function NewEntry() {
                     type="text"
                     required
                     />
-                <button>Salvar entrada</button>
+                <button>Salvar saída</button>
             </Form>
         </PageContainer>
     )
