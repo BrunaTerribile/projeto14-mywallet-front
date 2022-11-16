@@ -12,8 +12,14 @@ export default function Extract() {
             <PageContainer>
                 <ExtractBox> <h2>Não há registros de entrada ou saída</h2> </ExtractBox>
                 <ButtonBox>
-                    <Btn>Nova entrada</Btn>
-                    <Btn>Nova saída</Btn>
+                    <Btn>
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                        <p>Nova entrada</p>
+                    </Btn>
+                    <Btn>
+                        <ion-icon name="remove-circle-outline"></ion-icon>
+                        <p>Nova saída</p>
+                    </Btn>
                 </ButtonBox>
             </PageContainer>
         </>
@@ -47,4 +53,20 @@ const ButtonBox = styled.div`
 const Btn = styled.button`
     height: 114px;
     width: 155px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 17px;
+    padding: 15px;
+
+    p {
+        padding-right: 70px;
+        text-align: left;
+    }
+
+    ion-icon {
+        width: 25px;
+        height: 25px;
+    }
 `
