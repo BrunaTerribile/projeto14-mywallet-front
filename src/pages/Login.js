@@ -1,14 +1,15 @@
 import styled from "styled-components"
 import logo from "../assets/logo.svg"
-import { useState, useEffect } from "react"
+import { useState, useContext } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"
 import { PageContainer, Form } from "../assets/styles/style"
+import { AuthContext } from "../context/auth";
 
 export default function Login() {
-    const [email, setEmail] = useState(undefined)
-    const [password, setPassword] = useState(undefined)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const { setToken } = useContext(AuthContext)
     const navigate = useNavigate()
 
     function handleLogin(e){
@@ -16,16 +17,17 @@ export default function Login() {
 
         const URL = "http://localhost:5000/sign-in"
         const body = {
-            email: {email},
-            password: {password}
+            email,
+            password
         }
 
         axios.post(URL, body)
             .then((res) => {
+                setToken(res.token)
                 navigate("/extract")
             })
             .catch((err) => {
-                alert(`Algo deu errado! \n${err.response.data.message} \n`)
+                alert(`Algo deu errado! \n${err.message} \n Tente novamente mais tarde!`)
                 console.log(err)
             })
     }

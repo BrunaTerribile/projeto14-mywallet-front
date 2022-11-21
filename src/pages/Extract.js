@@ -1,15 +1,19 @@
 import styled from "styled-components"
 import exit from "../assets/exit.svg"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import { PageContainer, Header } from "../assets/styles/style"
 import { useNavigate } from "react-router-dom"
 import ExtractItem from "../components/ExtractItem"
+import { AuthContext } from "../context/auth";
 
-export default function Extract({token}) {
-    const navigate = useNavigate()
+export default function Extract() {
+    const navigate = useNavigate();
     const [extract, setExtract] = useState(undefined);
-    const config = { headers: { Authorization: `Bearer ${token}`}}
+
+    const { token } = useContext(AuthContext);
+    const config = { headers: { Authorization: `Bearer ${token}`}};
+
 
     useEffect(() => {
         const promise = axios.get("http://localhost:5000/extract", config);
@@ -25,10 +29,6 @@ export default function Extract({token}) {
 
     }, []);
 
-    if(!extract){
-        return <h2>Não há registros de entrada ou saída</h2>
-    }
-
     return (
         <>
             <Header>
@@ -38,12 +38,14 @@ export default function Extract({token}) {
             <PageContainer>
                 <ExtractBox> 
                     <List>
-                        {extract.map(r => (
-                            <ExtractItem 
-                                date={r.date} 
-                                description={r.description} 
-                                value={r.value}
-                            />))}
+                        {!extract ? <h2>Não há registros de entrada ou saída</h2> : 
+                            extract.map(r => (
+                                <ExtractItem 
+                                    date={r.date} 
+                                    description={r.description} 
+                                    value={r.value}
+                                />))}
+        
                     </List>
                     <Total>
                         <p> SALDO </p>
@@ -51,11 +53,11 @@ export default function Extract({token}) {
                     </Total>
                 </ExtractBox>
                 <ButtonBox>
-                    <Btn onClick={() => navigate('/novaentrada')}>
+                    <Btn onClick={() => navigate('/new-entry')}>
                         <ion-icon name="add-circle-outline"></ion-icon>
                         <p>Nova entrada</p>
                     </Btn>
-                    <Btn onClick={() => navigate('/novasaida')}>
+                    <Btn onClick={() => navigate('/new-outgo')}>
                         <ion-icon name="remove-circle-outline"></ion-icon>
                         <p>Nova saída</p>
                     </Btn>

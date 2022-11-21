@@ -1,13 +1,17 @@
 import { PageContainer, Header, Form} from "../assets/styles/style"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import dayjs from 'dayjs';
+import { AuthContext } from "../context/auth";
 
-export default function NewOutgo({token}) {
+export default function NewOutgo() {
     const navigate = useNavigate()
     const [register, setRegister] = useState({value: "", description: ""});
+
+    const { token } = useContext(AuthContext)
     const config = { headers: { Authorization: `Bearer ${token}`}}
+
     let now = dayjs().locale('pt-br').format('DD/MM');
 
     function handleRegister(e){
