@@ -11,11 +11,11 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
       <Routes>
-        <Route path='/' element={<Login />}/>
-        <Route path='/cadastro' element={<SignUp />}/>
-        <Route path='/extrato' element={<Extract />}/>
-        <Route path='/novaentrada' element={<NewEntry />}/>
-        <Route path='/novasaida' element={<NewOutgo />}/>
+        <Route path='/sign-in' element={<Login />}/>
+        <Route path='/sign-up' element={<SignUp />}/>
+        <Route path='/extract' element={<Extract />}/>
+        <Route path='/new-entry' element={<NewEntry />}/>
+        <Route path='/new-outgo' element={<NewOutgo />}/>
       </Routes>
 
     </BrowserRouter>
