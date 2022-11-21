@@ -15,8 +15,8 @@ export default function NewOutgo() {
     let now = dayjs().locale('pt-br').format('DD/MM');
 
     function handleRegister(e){
-        const { description, value } = e.target
-        setRegister({ ...register, [description]: value })
+        const { name, value } = e.target
+        setRegister({ ...register, [name]: value })
     }
 
     function sendRegister(e){

@@ -7,16 +7,16 @@ import { AuthContext } from "../context/auth";
 
 export default function NewEntry() {
     const navigate = useNavigate()
-    const [register, setRegister] = useState({value: "", description: ""})
+    const [register, setRegister] = useState({description: "", value: ""})
     
-    const { token } = useContext(AuthContext)
-    const config = { headers: { Authorization: `Bearer ${token}`}}
+    const { token }= useContext(AuthContext)
+    const config = { headers: { Authorization: `Bearer ${ token }`}}
 
     let now = dayjs().locale('pt-br').format('DD/MM');
 
     function handleRegister(e){
-        const { description, value } = e.target
-        setRegister({ ...register, [description]: value })
+        const { name, value } = e.target
+        setRegister({ ...register, [name]: value })
     }
 
     function sendRegister(e){

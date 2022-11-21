@@ -45,7 +45,6 @@ export default function Extract() {
                                     description={r.description} 
                                     value={r.value}
                                 />))}
-        
                     </List>
                     <Total>
                         <p> SALDO </p>
@@ -129,6 +128,7 @@ const Btn = styled.button`
 `
 const List = styled.ul`
     display: flex;
+    flex-direction: column;
 `
 
 /* <h2>Não há registros de entrada ou saída</h2> */
