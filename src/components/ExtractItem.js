@@ -1,29 +1,18 @@
 import styled from "styled-components"
 
-export default function ExtractItem() {
+export default function ExtractItem({ date, description, value}) {
     return (
         <List>
             <li>
-                <Date> 30/11 </Date>
-                <Description> Almoço mãe </Description>
-                <Value> 39.90 </Value>
-            </li>
-            <li>
-                <Date> 27/11 </Date>
-                <Description> Mercado </Description>
-                <Value> 542,54 </Value>
-            </li>
-            <li>
-                <Date> 26/11 </Date>
-                <Description> Compras Churrasco </Description>
-                <Value> 67,60 </Value>
+                <Date> {date} </Date>
+                <Description> {description} </Description>
+                <Value> {value} </Value>
             </li>
         </List>
     )
 }
 
 const List =  styled.div`
-
     li {
         display: flex;
         align-items: center;

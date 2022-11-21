@@ -1,11 +1,33 @@
 import styled from "styled-components"
 import exit from "../assets/exit.svg"
+import { useState, useEffect } from "react"
+import axios from "axios"
 import { PageContainer, Header } from "../assets/styles/style"
 import { useNavigate } from "react-router-dom"
 import ExtractItem from "../components/ExtractItem"
 
-export default function Extract() {
+export default function Extract({token}) {
     const navigate = useNavigate()
+    const [extract, setExtract] = useState(undefined);
+    const config = { headers: { Authorization: `Bearer ${token}`}}
+
+    useEffect(() => {
+        const promise = axios.get("http://localhost:5000/extract", config);
+
+        promise.then(res => {
+            let extractrArr = res.data
+            setExtract(extractrArr)
+
+        promise.catch(erro => {
+            console.log(erro.response.data)
+            });
+        })
+
+    }, []);
+
+    if(!extract){
+        return <h2>Não há registros de entrada ou saída</h2>
+    }
 
     return (
         <>
@@ -16,7 +38,12 @@ export default function Extract() {
             <PageContainer>
                 <ExtractBox> 
                     <List>
-                        <ExtractItem />
+                        {extract.map(r => (
+                            <ExtractItem 
+                                date={r.date} 
+                                description={r.description} 
+                                value={r.value}
+                            />))}
                     </List>
                     <Total>
                         <p> SALDO </p>
