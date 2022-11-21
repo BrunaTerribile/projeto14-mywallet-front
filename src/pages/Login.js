@@ -23,7 +23,7 @@ export default function Login() {
 
         axios.post(URL, body)
             .then((res) => {
-                setToken(res.token)
+                setToken(res.data.token)
                 navigate("/extract")
             })
             .catch((err) => {
